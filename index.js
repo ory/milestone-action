@@ -17,7 +17,7 @@ const renderAssignees = (assignees) => assignees.map(({name, url}) => `[@${name}
 const renderIssuesPulls = (label, issues) => issues
   .filter((issue) => issue.labels.nodes.map(({id}) => id).indexOf(label) > -1)
   .map(({title, number, url, assignees: {nodes: assignees}, state}) =>
-    `* [${state.toUpperCase() === 'OPEN' ? ' ' : 'x'}] ${title} ([${repo}#${number}](${url}))${assignees.length === 0 ? '' : `(${renderAssignees(assignees).join(', ')})`}`)
+    `* [${state.toUpperCase() === 'OPEN' ? ' ' : 'x'}] ${title} ([${repo}#${number}](${url}))${assignees.length === 0 ? '' : ` - ${renderAssignees(assignees).join(', ')}`}`)
 
 const renderLabels = ({issues, labels, pulls}) => labels.map(({name, description, id, url}) => {
   let markdown = ''
