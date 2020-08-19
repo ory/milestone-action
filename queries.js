@@ -1,6 +1,15 @@
-export const project = `
+const project = `
 query project($repo: String!, $owner: String!) {
   repository(name: $repo, owner: $owner) {
+    url
+    labels(first: 100) {
+      nodes{
+        id
+        name
+        description
+        url
+      }
+    }
     milestones(orderBy: {field: CREATED_AT, direction: DESC}, first: 8) {
       nodes {
         title
@@ -15,13 +24,13 @@ query project($repo: String!, $owner: String!) {
               }
             }
             url
+            number
             title
             body
             state
             labels(first: 4) {
               nodes {
-                name
-                description
+                id
               }
             }
             body
@@ -31,6 +40,7 @@ query project($repo: String!, $owner: String!) {
           nodes {
             title
             url
+            number
             assignees(first: 10) {
               nodes {
                 name
@@ -51,7 +61,7 @@ query project($repo: String!, $owner: String!) {
 }
 `
 
-export const projects = `
+const projects = `
 query projects($repo: String!, $owner: String!) {
   repository(name: $repo, owner: $owner) {
     milestones(orderBy: {field: CREATED_AT, direction: DESC}, first: 8) {
@@ -91,3 +101,5 @@ query projects($repo: String!, $owner: String!) {
   }
 }
 `
+
+module.exports = {projects, project}

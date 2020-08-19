@@ -1,5 +1,13 @@
 name: 'Milestone Documentation Generator'
 description: 'Generates documentation from milestone definitions'
+inputs:
+  GITHUB_TOKEN:
+    description: 'The GitHub Token'
+    required: true
+  outputFile:
+    description: The file to write the output to
+    required: false
+    default: MILESTONES.md
 runs:
   using: 'node12'
   main: 'index.js'
