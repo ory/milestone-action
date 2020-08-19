@@ -96,10 +96,12 @@ const renderRepository = async (query) => {
     milestones: repository.milestones.nodes.filter(({name}) => name !== 'unplanned')
   }).join('\n\n')
 
-  return `# [${owner}/${repo}](${repository.url})
+  return `# Milestones
 
 ${milestones}`.replace(/\n\s*\n/g, '\n\n')
 }
+
+//   return `# [${owner}/${repo}](${repository.url})
 
 renderRepository(octokit.graphql(queries.project, {repo, owner}))
   .then((markdown) => new Promise((resolve, reject) => {
