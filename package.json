@@ -1,0 +1,23 @@
+{
+  "name": "milestone-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ory/milestone-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ory/milestone-action/issues"
+  },
+  "homepage": "https://github.com/ory/milestone-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^4.0.0",
+    "@octokit/graphql": "^4.5.4"
+  }
+}

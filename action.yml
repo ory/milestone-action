@@ -1,0 +1,5 @@
+name: 'Milestone Documentation Generator'
+description: 'Generates documentation from milestone definitions'
+runs:
+  using: 'node12'
+  main: 'index.js'
