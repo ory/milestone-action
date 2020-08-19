@@ -18,7 +18,7 @@ const checkbox = (state) => `[${state.toUpperCase() === 'OPEN' ? ' ' : 'x'}]`
 
 const renderIssuesPulls = (label, issues) => issues
   .filter((issue) => issue.labels.nodes.map(({id}) => id).indexOf(label) > -1)
-  .map(({title, number, url, assignees: {nodes: assignees}, state}) =>
+  .map(({title, number, url, assignees: {nodes: assignees = []}, state}) =>
     `* ${checkbox(state)} ${title} ([${repo}#${number}](${url}))${assignees.length === 0 ? '' : ` - ${renderAssignees(assignees).join(', ')}`}`)
 
 const renderLabels = ({issues, labels, pulls}) => labels.map(({name, description, id, url}) => {
