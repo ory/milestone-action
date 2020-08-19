@@ -8,6 +8,12 @@ query project($repo: String!, $owner: String!) {
         url
         issues(first: 400) {
           nodes {
+            assignees(first: 10) {
+              nodes {
+                name
+                url
+              }
+            }
             url
             title
             body
@@ -25,6 +31,12 @@ query project($repo: String!, $owner: String!) {
           nodes {
             title
             url
+            assignees(first: 10) {
+              nodes {
+                name
+                url
+              }
+            }
             labels(first: 4) {
               nodes {
                 name
