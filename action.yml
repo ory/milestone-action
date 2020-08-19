@@ -1,4 +1,4 @@
-name: 'Milestone Documentation Generator'
+name: 'Generate Milestone Documentation'
 description: 'Generates documentation from milestone definitions'
 inputs:
   GITHUB_TOKEN:
