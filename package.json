@@ -1,16 +1,12 @@
 {
   "name": "milestone-action",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
   "main": "index.js",
-  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ory/milestone-action.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/ory/milestone-action/issues"
   },
