@@ -14,10 +14,12 @@ const outputFile = core.getInput('outputFile') || 'MILESTONES.md'
 
 const renderAssignees = (assignees) => assignees.map(({name, url}) => `[@${name}](${url})`)
 
+const checkbox = (state) => `[${state.toUpperCase() === 'OPEN' ? ' ' : 'x'}]`
+
 const renderIssuesPulls = (label, issues) => issues
   .filter((issue) => issue.labels.nodes.map(({id}) => id).indexOf(label) > -1)
   .map(({title, number, url, assignees: {nodes: assignees}, state}) =>
-    `* [${state.toUpperCase() === 'OPEN' ? ' ' : 'x'}] ${title} ([${repo}#${number}](${url}))${assignees.length === 0 ? '' : ` - ${renderAssignees(assignees).join(', ')}`}`)
+    `* ${checkbox(state)} ${title} ([${repo}#${number}](${url}))${assignees.length === 0 ? '' : ` - ${renderAssignees(assignees).join(', ')}`}`)
 
 const renderLabels = ({issues, labels, pulls}) => labels.map(({name, description, id, url}) => {
   let markdown = ''
@@ -61,6 +63,8 @@ const renderMilestones = ({labels, milestones}) => milestones.map(({
   title,
   description,
   url,
+  state,
+  dueOn,
   issues: {nodes: issues} = {nodes: []},
   pullRequests: {nodes: pulls = []} = {nodes: []}
 }) => {
@@ -78,7 +82,7 @@ const renderMilestones = ({labels, milestones}) => milestones.map(({
 ${markdown}`
     }
 
-    markdown = `## [${title}](${url})
+    markdown = `## [${title}](${url})${dueOn ? ` - ${dueOn}` : ''}
 
 ${markdown}`
   }
@@ -96,12 +100,12 @@ const renderRepository = async (query) => {
     milestones: repository.milestones.nodes.filter(({name}) => name !== 'unplanned')
   }).join('\n\n')
 
-  return `# Milestones
+  return `---
+id: milestones
+title: Milestones and Roadmap
+---
 
-${milestones}`.replace(/\n\s*\n/g, '\n\n')
-}
-
-//   return `# [${owner}/${repo}](${repository.url})
+${milestones}`.replace(/\n\s*\n/g, '\n\n')}
 
 renderRepository(octokit.graphql(queries.project, {repo, owner}))
   .then((markdown) => new Promise((resolve, reject) => {
