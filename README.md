@@ -35,14 +35,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Milestone Documentation Generator
-        uses: ory/milestone-action@v0.0.6
+        uses: ory/milestone-action@v0.0.9
         with:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           outputFile: docs/docs/milestones.md
       - name: Commit Milestone Documentation
         uses: EndBug/add-and-commit@v4.4.0
         with:
-          message: "autogen(docs): update milestone"
+          message: "autogen(docs): update milestone document"
           author_name: aeneasr
           author_email: "3372410+aeneasr@users.noreply.github.com"
 ```

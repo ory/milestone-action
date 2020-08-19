@@ -25,7 +25,7 @@ const renderLabels = ({issues, labels, pulls}) => labels.map(({name, description
   let markdown = ''
 
   const markdownIssues = renderIssuesPulls(id, issues)
-  if (markdownIssues.length > 0) {
+  if (markdownIssues) {
     markdown = `${markdown}
 
 #### Issues
@@ -34,7 +34,7 @@ ${markdownIssues.join('\n')}`
   }
 
   const markdownPulls = renderIssuesPulls(id, pulls)
-  if (markdownPulls.length > 0) {
+  if (markdownPulls) {
     markdown = `${markdown}
 
 #### Pull Requests
@@ -42,8 +42,8 @@ ${markdownIssues.join('\n')}`
 ${markdownPulls.join('\n')}`
   }
 
-  if (markdown.length > 0) {
-    if (description.length > 0) {
+  if (markdown) {
+    if (description) {
       markdown = `${description}
 
 ${markdown}`
@@ -71,11 +71,11 @@ const renderMilestones = ({labels, milestones}) => milestones.map(({
   let markdown = ''
 
   const markdownLabels = renderLabels({labels, issues, pulls})
-  if (markdownLabels.length > 0) {
+  if (markdownLabels) {
     markdown = markdownLabels.join('\n\n')
   }
 
-  if (markdown.length > 0) {
+  if (markdown) {
     if (description) {
       markdown = `${description}
 
