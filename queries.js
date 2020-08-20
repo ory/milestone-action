@@ -28,14 +28,18 @@ query project($repo: String!, $owner: String!) {
             url
             number
             title
-            body
             state
+            repository {
+              name
+            }
             labels(first: 4) {
               nodes {
                 id
+                name
+                description
+                url
               }
             }
-            body
           }
         }
         pullRequests(first: 100) {
@@ -43,6 +47,10 @@ query project($repo: String!, $owner: String!) {
             title
             url
             number
+            state
+            repository {
+              name
+            }
             assignees(first: 10) {
               nodes {
                 name
@@ -51,8 +59,10 @@ query project($repo: String!, $owner: String!) {
             }
             labels(first: 4) {
               nodes {
+                id
                 name
                 description
+                url
               }
             }
           }
@@ -63,38 +73,58 @@ query project($repo: String!, $owner: String!) {
 }
 `
 
-const projects = `
-query projects($repo: String!, $owner: String!) {
-  repository(name: $repo, owner: $owner) {
-    milestones(orderBy: {field: CREATED_AT, direction: DESC}, first: 8) {
-      nodes {
-        title
-        description
-        url
-        issues(first: 400) {
-          nodes {
-            url
-            title
-            body
-            state
-            labels(first: 4) {
-              nodes {
-                name
-                description
-              }
+// { "query":"user:ory label:corp/m2"}
+const findIssuesPulls = `
+query findIssuesPulls($search: String!) {
+  search(query: $search, type: ISSUE, first: 100) {
+    issueCount
+    edges {
+      node {
+        ... on PullRequest {
+          id
+          title
+          url
+          number
+          state
+          repository {
+            name
+          }
+          assignees(first: 10) {
+            nodes {
+              name
+              url
             }
-            body
+          }
+          labels(first: 4) {
+            nodes {
+              id
+              name
+              description
+              url
+            }
           }
         }
-        pullRequests(first: 100) {
-          nodes {
-            title
-            url
-            labels(first: 4) {
-              nodes {
-                name
-                description
-              }
+        ... on Issue {
+          id
+          title
+          url
+          number
+          state
+          repository {
+            name
+          }
+          assignees(first: 10) {
+            nodes {
+              name
+              url
+            }
+          }
+          labels(first: 4) {
+            nodes {
+              id
+              name
+              description
+              url
             }
           }
         }
@@ -104,4 +134,4 @@ query projects($repo: String!, $owner: String!) {
 }
 `
 
-module.exports = {projects, project}
+module.exports = { project,findIssuesPulls}
