@@ -22,7 +22,7 @@ inputs:
   onlyLabels:
     description: "Only include issues and pull requests with the given labels."
     required: false
-    default: bug,enhancement,blocker,docs,ci
+    default: bug,feat,blocking,breaking-change,good-first-issue,docs,ci,rfc,help-wanted
 runs:
   using: 'node12'
   main: 'index.js'

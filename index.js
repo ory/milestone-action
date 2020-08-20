@@ -16,7 +16,19 @@ let ignoreMilestones = core.getInput('ingoreMilestones').split(',').map(i => i.t
 let onlyLabels = core.getInput('onlyLabels').split(',').map(i => i.toLowerCase().trim()).filter(i => Boolean(i))
 
 if (onlyLabels.length === 0) {
-  onlyLabels = ['bug', 'enhancement', 'blocker', 'docs', 'ci']
+  onlyLabels = [
+    'bug',
+    'feat',
+    'blocking',
+    'breaking change',
+    'good first issue',
+    'docs',
+    'ci',
+    'rfc',
+    'tests',
+    'upstream',
+    'help wanted',
+  ]
 }
 
 if (ignoreMilestones.length === 0) {
