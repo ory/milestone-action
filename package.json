@@ -2,6 +2,11 @@
   "name": "milestone-action",
   "version": "0.0.0",
   "main": "index.js",
+  "prettier": "ory-prettier-styles",
+  "scripts": {
+    "format": "prettier --write \"*.{js,md}\"",
+    "format:check": "prettier --check \"*.{js,md}\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ory/milestone-action.git"
@@ -13,6 +18,8 @@
   "homepage": "https://github.com/ory/milestone-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.4",
-    "@actions/github": "^4.0.0"
+    "@actions/github": "^4.0.0",
+    "ory-prettier-styles": "^1.0.1",
+    "prettier": "^2.1.1"
   }
 }

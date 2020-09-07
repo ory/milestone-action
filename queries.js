@@ -134,4 +134,4 @@ query findIssuesPulls($search: String!) {
 }
 `
 
-module.exports = { project,findIssuesPulls}
+module.exports = { project, findIssuesPulls }
