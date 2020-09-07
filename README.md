@@ -15,7 +15,6 @@ The file to write the output to
 
 Default: `MILESTONES.md`
 
-
 ### `labelMilestonePrefix`
 
 Prefix of labels that identify a milestone, for example `/cloud` becomes `cloud/M1`. Only effective in combination with `input.orgs`.
@@ -47,7 +46,7 @@ name: Generate and Publish Milestone Document
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -68,13 +67,12 @@ jobs:
       - name: Commit Milestone Documentation
         uses: EndBug/add-and-commit@v4.4.0
         with:
-          message: "autogen(docs): update milestone document"
+          message: 'autogen(docs): update milestone document'
           author_name: aeneasr
-          author_email: "3372410+aeneasr@users.noreply.github.com"
+          author_email: '3372410+aeneasr@users.noreply.github.com'
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_PRIVILEGED }}
 ```
-
 
 ### Single repository
 
@@ -84,9 +82,33 @@ name: Generate and Publish Milestone Document
 on:
   workflow_dispatch:
   issues:
-    types: [opened, closed, edited, demilestoned, milestoned, reopened, assigned, unassigned, labeled, unlabeled]
+    types:
+      [
+        opened,
+        closed,
+        edited,
+        demilestoned,
+        milestoned,
+        reopened,
+        assigned,
+        unassigned,
+        labeled,
+        unlabeled,
+      ]
   pull_request:
-    types: [opened, closed, edited, demilestoned, milestoned, reopened, assigned, unassigned, labeled, unlabeled]
+    types:
+      [
+        opened,
+        closed,
+        edited,
+        demilestoned,
+        milestoned,
+        reopened,
+        assigned,
+        unassigned,
+        labeled,
+        unlabeled,
+      ]
 
 jobs:
   milestone:
@@ -105,9 +127,9 @@ jobs:
       - name: Commit Milestone Documentation
         uses: EndBug/add-and-commit@v4.4.0
         with:
-          message: "autogen(docs): update milestone document"
+          message: 'autogen(docs): update milestone document'
           author_name: aeneasr
-          author_email: "3372410+aeneasr@users.noreply.github.com"
+          author_email: '3372410+aeneasr@users.noreply.github.com'
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_PRIVILEGED }}
 ```
