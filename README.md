@@ -1,7 +1,7 @@
 # milestone-action
 
-Generates a markdown document based on milestones, issues, pull requets,
-and labels.
+Generates a markdown document based on milestones, issues, pull requets, and
+labels.
 
 ## Inputs
 
@@ -17,17 +17,21 @@ Default: `MILESTONES.md`
 
 ### `labelMilestonePrefix`
 
-Prefix of labels that identify a milestone, for example `/cloud` becomes `cloud/M1`. Only effective in combination with `input.orgs`.
+Prefix of labels that identify a milestone, for example `/cloud` becomes
+`cloud/M1`. Only effective in combination with `input.orgs`.
 
 Default: corp/
 
 ### `orgs`
 
-Instead of checking this single repository, also check all the repositories of the given orgs (use comma-separated values - `foo,bar,baz`) for issues with prefixed `labelMilestonePrefix` labels.
+Instead of checking this single repository, also check all the repositories of
+the given orgs (use comma-separated values - `foo,bar,baz`) for issues with
+prefixed `labelMilestonePrefix` labels.
 
 ### `ingoreMilestones`
 
-Ignore milestones with the given names. Ignore multiple milestones with comma-separated values (`foo,bar,baz`).
+Ignore milestones with the given names. Ignore multiple milestones with
+comma-separated values (`foo,bar,baz`).
 
 Default: unplanned
 
@@ -35,7 +39,8 @@ Default: unplanned
 
 Only include issues and pull requests with the given labels.
 
-Default: bug,feat,blocking,breaking-change,good-first-issue,docs,ci,rfc,help-wanted
+Default:
+bug,feat,blocking,breaking-change,good-first-issue,docs,ci,rfc,help-wanted
 
 ## Example usage
 
