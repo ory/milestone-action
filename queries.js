@@ -10,7 +10,7 @@ query project($repo: String!, $owner: String!) {
         url
       }
     }
-    milestones(orderBy: {field: CREATED_AT, direction: DESC}, states: [OPEN], first: 8) {
+    milestones(orderBy: {field: CREATED_AT, direction: DESC}, states: [OPEN, CLOSED], first: 8) {
       nodes {
         title
         state
