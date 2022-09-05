@@ -18,7 +18,7 @@
   "prettier": "ory-prettier-styles",
   "dependencies": {
     "@actions/core": "^1.2.4",
-    "@actions/github": "^4.0.0",
+    "@actions/github": "^4.0.0"
   },
   "devDependencies": {
     "prettier": "^2.7.1",
