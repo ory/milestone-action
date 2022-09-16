@@ -11,10 +11,6 @@
   },
   "license": "Apache-2.0",
   "main": "index.js",
-  "scripts": {
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
-  },
   "prettier": "ory-prettier-styles",
   "dependencies": {
     "@actions/core": "^1.2.4",
