@@ -1,3 +1,5 @@
+// Copyright © 2022 Ory Corp
+
 const fs = require("fs")
 const github = require("@actions/github")
 const core = require("@actions/core")

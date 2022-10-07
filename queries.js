@@ -1,3 +1,5 @@
+// Copyright © 2022 Ory Corp
+
 const project = `
 query project($repo: String!, $owner: String!) {
   repository(name: $repo, owner: $owner) {
